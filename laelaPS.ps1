@@ -1,5 +1,4 @@
-#https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor
-# 
+# Reference: https://docs.microsoft.com/en-us/windows/security/threat-protection/auditing/event-4799
 
 param(
 [Parameter(Mandatory=$False)]
@@ -18,12 +17,5 @@ Get-WinEvent -ComputerName $server -Filterhashtable @{
 		'Enumerated Group' = $_.properties[0].Value
 		'Enumerated Domain' = $_.properties[1].Value
 		'Attacking User' = $_.properties[4].Value
-		
-		}
-		
-} | Format-Table -Autosize
-
-
-
-
-
+		}	
+} | Format-Table -Autosize -Property 'Time Created', 'Enumerated Group', 'Enumerated Domain', 'Attacking User'
