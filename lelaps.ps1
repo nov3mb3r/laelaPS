@@ -1,27 +1,29 @@
+#https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor
+# 
+
 param(
 [Parameter(Mandatory=$False)]
 [String]$server="localhost"
 )
 
-#$Event = Get-WinEvent -LogName Security -ComputerName $server 
-#$Event | where {($_.Id -eq '5719')}
-#Get-WinEvent -FilterHashtable @{LogName = 'System';ID='5719'} | select -First 1 -ExpandProperty Properties
+#Get-WinEvent -FilterHashtable @{LogName = 'Security';ID='4624'} | select -First 1 -Property *
+#Get-WinEvent -FilterHashtable @{LogName = 'System';ID='5719'} | select -First 1 -ExpandProperty Properties 
 # | select -First 1 -Property *
 
 Get-WinEvent -ComputerName $server -Filterhashtable @{
 	LogName='Security'
-	id='4624'} | ForEach-Object -Process {
+	id='4799'} | ForEach-Object -Process {
 	New-Object -TypeName PSObject -Property @{
-		'Account Name' = $_.properties[1].Value
 		'Time Created' = $_.TimeCreated
+		'Enumerated Group' = $_.properties[0].Value
+		'Enumerated Domain' = $_.properties[1].Value
+		'Attacking User' = $_.properties[4].Value
+		
 		}
 		
 } | Format-Table -Autosize
 
-#Get-WinEvent -ComputerName $server -Filterhashtable @{LogName='Security'; id='4624'} |
-#	Group-Object -Property ProcessId, ThreadId, MachineName | Select Name
 
-#https://docs.microsoft.com/en-us/windows-server/identity/ad-ds/plan/appendix-l--events-to-monitor
 
-#Get-WinEvent -FilterHashtable @{LogName = 'Security';ID='4624'} | select -First 1 -Property *
+
 
