@@ -1,5 +1,5 @@
 # laelaPS
-Similar to the mythological dog that never failed to catch what he was hunting, laelaPS is a tool designed to identify [MITRE ATT&CK](https://attack.mitre.org/matrices/enterprise/) techniques that are used in attacks against Active Directory based on events recorded on Domain Controller:
+Similar to the mythological dog that never failed to catch what he was hunting, laelaPS is a tool designed to identify [MITRE ATT&CK](https://attack.mitre.org/matrices/enterprise/) techniques that are used in attacks against Active Directory, based on events recorded on Domain Controller:
 - Permission Groups Discovery ([T1069](https://attack.mitre.org/techniques/T1069/))
 - Account Discovery ([T1087](https://attack.mitre.org/techniques/T1087/))
 
