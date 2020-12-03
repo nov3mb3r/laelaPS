@@ -11,13 +11,12 @@ Common tools that are used to enumeratate users and groups inside a domain are:
 Using administrative privileges, run the laelaPS on the Domain Controller </p>
 `PS >.\laelaPS.ps1`
 
-## Remote usage
-Using administrative privileges, specify the remote Domain Controller server </p>
-`PS >.\laelaPS.ps1 -server <DC_IP_addr>`
-
 The report will include the enumerated groups, along with the timestamp of the attack and the user that requested the enumeration
 
 ![](https://github.com/nov3mb3r/laelaPS/blob/main/report.PNG)
+## Remote usage
+Using administrative privileges, specify the remote Domain Controller server </p>
+`PS >.\laelaPS.ps1 -server <DC_IP_addr>`
 
 # Note
 Enumeration is not reported when group members are enumerated using Active Directory Users and Computers snap-in
