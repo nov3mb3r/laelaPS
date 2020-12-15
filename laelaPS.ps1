@@ -5,10 +5,6 @@ param(
 [String]$server="localhost"
 )
 
-#Get-WinEvent -FilterHashtable @{LogName = 'Security';ID='4624'} | select -First 1 -Property *
-#Get-WinEvent -FilterHashtable @{LogName = 'System';ID='5719'} | select -First 1 -ExpandProperty Properties 
-# | select -First 1 -Property *
-
 Get-WinEvent -ComputerName $server -Filterhashtable @{
 	LogName='Security'
 	id='4799'} | ForEach-Object -Process {
